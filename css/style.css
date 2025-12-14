@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #0b1c2d, #000);
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.hero {
+  padding: 60px 20px;
+}
+
+.profile-pic {
+  width: 140px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(0,150,255,0.4);
+}
+
+.intro, .projects, .blogs {
+  padding: 60px 20px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #1e90ff;
+  color: white;
+  cursor: pointer;
+}
+
+.tabs .active {
+  background: #0b5ed7;
+}
+
+.hidden {
+  display: none;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.project-card {
+  background: #0e1e2d;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.links a {
+  margin: 10px;
+  display: inline-block;
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.blog-card {
+  max-width: 600px;
+  margin: auto;
+  background: #0e1e2d;
+  padding: 30px;
+  border-radius: 12px;
+}
