@@ -16,7 +16,7 @@ body {
     width: 600px;
     height: 600px;
     transform: translate(-50%, -50%);
-    opacity: 0.15; /* Very subtle, increase to 0.25 if you want slightly more visible */
+    opacity: 0.25; /* Very subtle, increase to 0.25 if you want slightly more visible */
     pointer-events: none;
     z-index: -1;
 }
@@ -27,31 +27,43 @@ body {
     left: 50%;
     border: 2px solid #00ffff;
     border-radius: 50%;
-    box-shadow: 0 0 15px #00ffff;
+    box-shadow: 0 0 20px #00ffff, 0 0 40px rgba(0, 255, 255, 0.3);
     animation: orbit-rotate linear infinite;
     transform: translate(-50%, -50%);
 }
 
 .orbit1 {
-    width: 200px;
-    height: 300px;
-    border-style: dashed;
-    animation-duration: 15s;
-    transform: translate(-50%, -50%) rotate(45deg);
+    width: 250px;
+    height: 350px;
+    animation-duration: 18s;
+    transform: translate(-50%, -50%) rotate(60deg);
 }
 
 .orbit2 {
-    width: 400px;
-    height: 250px;
-    animation-duration: 20s;
+    width: 450px;
+    height: 300px;
+    animation-duration: 24s;
     animation-direction: reverse;
 }
 
 .orbit3 {
-    width: 500px;
-    height: 400px;
-    animation-duration: 25s;
+    width: 600px;
+    height: 450px;
+    animation-duration: 30s;
     transform: translate(-50%, -50%) rotate(30deg);
+}
+/* Add a faint central glow for nucleus hint (optional, subtle) */
+.orbit::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #00ffff 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
 }
 
 @keyframes orbit-rotate {
