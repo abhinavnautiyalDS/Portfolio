@@ -9,6 +9,7 @@ document.querySelectorAll('.tab').forEach(tab => {
     });
 });
 
+
 // Project filters
 document.querySelectorAll('.filter').forEach(filter => {
     filter.addEventListener('click', () => {
