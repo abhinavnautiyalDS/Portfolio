@@ -1,137 +1,187 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhinav | Data Scientist</title>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <!-- FIXED: correct CSS file name -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
-    <!-- Atom background -->
-    <div class="atom-orbits">
-        <div class="orbit orbit1"></div>
-        <div class="orbit orbit2"></div>
-        <div class="orbit orbit3"></div>
+<!-- ATOM BACKGROUND -->
+<div class="atom-orbits">
+    <div class="nucleus"></div>
+
+    <div class="orbit orbit1"><span class="electron"></span></div>
+    <div class="orbit orbit2"><span class="electron"></span></div>
+    <div class="orbit orbit3"><span class="electron"></span></div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+    <button class="cert-button" onclick="openModal()">Degrees & Certificates</button>
+
+    <div class="cert-preview" onclick="openModal()">
+        <ul>
+            <li>AlmaBetter Data Science</li>
+            <li>Physics Degree</li>
+            <li>Internship</li>
+        </ul>
     </div>
 
-    <!-- HEADER / HERO -->
-    <header class="hero">
-        <button class="cert-button" onclick="openModal()">Degrees & Certificates</button>
-
-        <div class="hero-center">
-            <div class="profile-pic">
-                <img src="https://placehold.co/200x200" alt="Profile Picture">
-            </div>
-
-            <h1>Abhinav Nautiyal</h1>
-            <h2>Physics Graduate → Data Scientist | ML • MLOps • GenAI</h2>
-
-            <div class="social-icons">
-                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://medium.com" target="_blank"><i class="fab fa-medium"></i></a>
-            </div>
+    <div class="hero-center">
+        <div class="profile-pic">
+            <img src="https://placehold.co/200x200" alt="Profile">
         </div>
 
-        <div class="cert-preview">
-            <ul>
-                <li>AlmaBetter Data Science</li>
-                <li>Physics Degree</li>
-                <li>Internship</li>
-            </ul>
-        </div>
-    </header>
+        <h1>Abhinav Nautiyal</h1>
+        <h2>Physics Graduate → Data Scientist | ML • MLOps • GenAI</h2>
 
-    <!-- INTRODUCTION -->
-    <section class="introduction">
-        <h3>Introduction</h3>
-
-        <div class="intro-tabs">
-            <button class="tab active" data-tab="written">Written</button>
-            <button class="tab" data-tab="video">Video</button>
-        </div>
-
-        <div class="intro-content active" id="written-content">
-            <p>
-                I am a Physics graduate and aspiring Data Scientist with strong foundations
-                in statistics, machine learning, and Python.  
-                <br><br>
-                I enjoy solving real-world problems using data, building end-to-end ML pipelines,
-                and deploying scalable solutions.
-            </p>
-        </div>
-
-        <div class="intro-content" id="video-content">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="projects">
-        <h3>All Projects</h3>
-
-        <div class="project-filters">
-            <button class="filter active" data-category="all">All</button>
-            <button class="filter" data-category="ml">ML & MLOps</button>
-            <button class="filter" data-category="dl">DL & GenAI</button>
-            <button class="filter" data-category="sql">SQL & PowerBI</button>
-        </div>
-
-        <div class="project-grid">
-            <div class="project" data-category="ml">
-                <img src="https://placehold.co/300x200" alt="">
-                <h4>Vehicle Insurance Renewal</h4>
-                <p class="project-meta">Binary Classification • Imbalanced Data</p>
-                <div class="buttons">
-                    <a class="btn source">Source Code</a>
-                    <a class="btn read">Read</a>
-                </div>
-            </div>
-
-            <div class="project" data-category="ml">
-                <img src="https://placehold.co/300x200" alt="">
-                <h4>Customer Churn Analysis</h4>
-                <p class="project-meta">EDA • ML Models • ROC-AUC</p>
-                <div class="buttons">
-                    <a class="btn source">Source Code</a>
-                    <a class="btn read">Read</a>
-                </div>
-            </div>
-
-            <div class="project" data-category="dl">
-                <img src="https://placehold.co/300x200" alt="">
-                <h4>Stock Price Prediction</h4>
-                <p class="project-meta">Time Series • LSTM</p>
-                <div class="buttons">
-                    <a class="btn source">Source Code</a>
-                    <a class="btn read">Read</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODAL -->
-    <div id="cert-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3>Degrees & Certificates</h3>
-            <ul>
-                <li>AlmaBetter Data Science</li>
-                <li>BSc Physics</li>
-                <li>Internship Certificate</li>
-            </ul>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-medium"></i></a>
         </div>
     </div>
+</header>
 
-    <script src="script.js"></script>
+<!-- INTRO -->
+<section class="introduction">
+    <h3>Introduction</h3>
+
+    <div class="intro-tabs">
+        <button class="tab active" data-tab="written">Written</button>
+        <button class="tab" data-tab="video">Video</button>
+    </div>
+
+    <div class="intro-content active" id="written-content">
+        <p>
+            I am a Physics graduate and aspiring Data Scientist with strong foundations in
+            statistics, machine learning, and Python.
+            <br><br>
+            I enjoy solving real-world problems using data, building ML pipelines,
+            and deploying scalable solutions.
+        </p>
+    </div>
+
+    <div class="intro-content" id="video-content">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects">
+    <h3>All Projects</h3>
+
+    <div class="project-filters">
+        <button class="filter active" data-category="all">All</button>
+        <button class="filter" data-category="ml">ML & MLOps</button>
+        <button class="filter" data-category="dl">DL & GenAI</button>
+        <button class="filter" data-category="sql">SQL & PowerBI</button>
+    </div>
+
+    <div class="project-grid">
+
+        <!-- 8 PROJECTS -->
+        <div class="project" data-category="ml">
+            <img src="https://placehold.co/300x200">
+            <h4>Vehicle Insurance Renewal</h4>
+            <p class="project-meta">Binary Classification • Imbalanced Data</p>
+            <div class="buttons">
+                <a class="btn source">Source Code</a>
+                <a class="btn read">Read</a>
+            </div>
+        </div>
+
+        <div class="project" data-category="ml">
+            <img src="https://placehold.co/300x200">
+            <h4>Customer Churn Analysis</h4>
+            <p class="project-meta">EDA • ROC-AUC</p>
+            <div class="buttons">
+                <a class="btn source">Source Code</a>
+                <a class="btn read">Read</a>
+            </div>
+        </div>
+
+        <div class="project" data-category="dl">
+            <img src="https://placehold.co/300x200">
+            <h4>Stock Price Prediction</h4>
+            <p class="project-meta">Time Series • LSTM</p>
+            <div class="buttons">
+                <a class="btn source">Source Code</a>
+                <a class="btn read">Read</a>
+            </div>
+        </div>
+
+        <div class="project" data-category="dl">
+            <img src="https://placehold.co/300x200">
+            <h4>Image Generation with GANs</h4>
+            <p class="project-meta">Deep Learning • GAN</p>
+            <div class="buttons">
+                <a class="btn source">Source Code</a>
+                <a class="btn read">Read</a>
+            </div>
+        </div>
+
+        <div class="project" data-category="sql">
+            <img src="https://placehold.co/300x200">
+            <h4>SQL Dashboard Analysis</h4>
+            <p class="project-meta">SQL • Analytics</p>
+            <div class="buttons">
+                <a class="btn source">Source Code</a>
+                <a class="btn read">Read</a>
+            </div>
+        </div>
+
+        <div class="project" data-category="ml">
+            <img src="https://placehold.co/300x200">
+            <h4>MLOps Pipeline</h4>
+            <p class="project-meta">CI/CD • Deployment</p>
+            <div class="buttons">
+                <a class="btn source">Source Code</a>
+                <a class="btn read">Read</a>
+            </div>
+        </div>
+
+        <div class="project" data-category="dl">
+            <img src="https://placehold.co/300x200">
+            <h4>Generative AI Chatbot</h4>
+            <p class="project-meta">LLM • NLP</p>
+            <div class="buttons">
+                <a class="btn source">Source Code</a>
+                <a class="btn read">Read</a>
+            </div>
+        </div>
+
+        <div class="project" data-category="sql">
+            <img src="https://placehold.co/300x200">
+            <h4>PowerBI Sales Report</h4>
+            <p class="project-meta">BI • Dashboard</p>
+            <div class="buttons">
+                <a class="btn source">Source Code</a>
+                <a class="btn read">Read</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- MODAL -->
+<div id="cert-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>Degrees & Certificates</h3>
+        <ul>
+            <li>AlmaBetter Data Science</li>
+            <li>BSc Physics</li>
+            <li>Internship Certificate</li>
+        </ul>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
