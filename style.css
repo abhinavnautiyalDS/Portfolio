@@ -1,17 +1,34 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     background: #0a0f1e;
-    color: #fff;
+    color: #ffffff;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
+/* =========================
+   ATOM BACKGROUND (SAFE)
+========================= */
+.atom-orbits,
+.atom-orbits * {
+    pointer-events: none !important; /* 🔥 CRITICAL */
+}
 
-/* ATOM BACKGROUND */
 .atom-orbits {
-    position: fixed;
+    position: absolute;
     inset: 0;
-    pointer-events: none;
+    margin: auto;
+    width: 900px;
+    height: 900px;
     z-index: 0;
+    opacity: 0.35;
 }
 
 .nucleus {
@@ -53,33 +70,41 @@ body {
 
 @keyframes spin {
     from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* FOREGROUND */
+/* =========================
+   FOREGROUND GUARANTEE
+========================= */
 .hero,
 .introduction,
-.projects {
+.projects,
+button,
+a {
     position: relative;
     z-index: 5;
+    pointer-events: auto;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 .hero {
     text-align: center;
-    padding: 80px 20px;
+    padding: 80px 20px 60px;
 }
 
 .cert-button {
     position: absolute;
     top: 20px;
     left: 20px;
-    padding: 12px 24px;
-    border-radius: 20px;
-    border: none;
     background: #00aaff;
     color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 20px;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .cert-preview {
@@ -114,10 +139,17 @@ body {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
-/* INTRO */
+.social-icons a {
+    color: #fff;
+    font-size: 22px;
+}
+
+/* =========================
+   INTRODUCTION
+========================= */
 .introduction {
     max-width: 900px;
     margin: 60px auto;
@@ -127,11 +159,13 @@ body {
 .intro-tabs {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .tab {
-    padding: 10px 20px;
+    padding: 10px 22px;
+    border-radius: 5px;
     border: none;
     cursor: pointer;
     background: #00aaff;
@@ -142,10 +176,17 @@ body {
     background: #005588;
 }
 
-.intro-content { display: none; }
-.intro-content.active { display: block; }
+.intro-content {
+    display: none;
+}
 
-/* PROJECTS */
+.intro-content.active {
+    display: block;
+}
+
+/* =========================
+   PROJECTS
+========================= */
 .projects {
     max-width: 1200px;
     margin: auto;
@@ -163,17 +204,18 @@ body {
     border: none;
     color: #00aaff;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .filter.active {
-    color: #fff;
+    color: #ffffff;
     text-decoration: underline;
 }
 
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 22px;
     margin-top: 30px;
 }
 
@@ -184,9 +226,15 @@ body {
     text-align: center;
 }
 
+.project img {
+    width: 100%;
+    border-radius: 6px;
+}
+
 .project-meta {
     font-size: 14px;
     opacity: 0.8;
+    margin-bottom: 10px;
 }
 
 .buttons {
@@ -196,22 +244,30 @@ body {
 }
 
 .btn {
-    padding: 10px 15px;
+    padding: 10px 16px;
     border-radius: 5px;
     text-decoration: none;
     color: #fff;
+    cursor: pointer;
 }
 
-.source { background: #00aaff; }
-.read { border: 1px solid #00aaff; }
+.source {
+    background: #00aaff;
+}
 
-/* MODAL */
+.read {
+    border: 1px solid #00aaff;
+}
+
+/* =========================
+   MODAL
+========================= */
 .modal {
     display: none;
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.6);
-    z-index: 20;
+    z-index: 50;
 }
 
 .modal-content {
