@@ -1,20 +1,16 @@
-// Introduction tabs
+// Intro tabs
 const tabs = document.querySelectorAll('.tab');
 const contents = document.querySelectorAll('.intro-content');
 
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
         tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
         tab.classList.add('active');
-        
-        contents.forEach(c => {
-            c.classList.remove('active');
-            c.style.display = 'none';
-        });
-        
-        const target = document.getElementById(tab.dataset.tab + '-content');
-        target.classList.add('active');
-        target.style.display = 'block';
+        document
+            .getElementById(tab.dataset.tab + '-content')
+            .classList.add('active');
     });
 });
 
@@ -26,14 +22,13 @@ filters.forEach(filter => {
     filter.addEventListener('click', () => {
         filters.forEach(f => f.classList.remove('active'));
         filter.classList.add('active');
-        
+
         const category = filter.dataset.category;
         projects.forEach(p => {
-            if (category === 'all' || p.dataset.category === category) {
-                p.style.display = 'block';
-            } else {
-                p.style.display = 'none';
-            }
+            p.style.display =
+                category === 'all' || p.dataset.category === category
+                    ? 'block'
+                    : 'none';
         });
     });
 });
@@ -49,8 +44,6 @@ function closeModal() {
     modal.style.display = 'none';
 }
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        closeModal();
-    }
-}
+window.onclick = e => {
+    if (e.target === modal) closeModal();
+};
