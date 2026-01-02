@@ -8,45 +8,66 @@ body {
     overflow-x: hidden;
 }
 
-/* Atom animation (big, subtle in background) */
-.atom {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    opacity: 0.3;
-    z-index: -1;
-}
-
-.nucleus {
+/* Subtle Atom Orbits for Physics Essence */
+.atom-orbits {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 30px;
-    height: 30px;
-    background: #ff0000;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -50%);
+    opacity: 0.15; /* Very subtle, increase to 0.25 if you want slightly more visible */
+    pointer-events: none;
+    z-index: -1;
+}
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 2px solid #00ffff;
     border-radius: 50%;
+    box-shadow: 0 0 15px #00ffff;
+    animation: orbit-rotate linear infinite;
     transform: translate(-50%, -50%);
 }
 
-.electron {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: #00ffff;
-    border-radius: 50%;
-    animation: orbit 10s linear infinite;
+.orbit1 {
+    width: 200px;
+    height: 300px;
+    border-style: dashed;
+    animation-duration: 15s;
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.electron1 { animation-duration: 5s; }
-.electron2 { animation-duration: 7s; animation-delay: -2s; }
-.electron3 { animation-duration: 9s; animation-delay: -4s; }
+.orbit2 {
+    width: 400px;
+    height: 250px;
+    animation-duration: 20s;
+    animation-direction: reverse;
+}
 
-@keyframes orbit {
-    from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+.orbit3 {
+    width: 500px;
+    height: 400px;
+    animation-duration: 25s;
+    transform: translate(-50%, -50%) rotate(30deg);
+}
+
+@keyframes orbit-rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .atom-orbits {
+        width: 400px;
+        height: 400px;
+    }
+    .orbit1 { width: 140px; height: 200px; }
+    .orbit2 { width: 260px; height: 160px; }
+    .orbit3 { width: 320px; height: 260px; }
 }
 
 /* Header */
