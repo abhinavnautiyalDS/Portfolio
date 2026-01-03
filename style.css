@@ -433,7 +433,7 @@ a {
 }
 
 
-.shooting-star {
+/* .shooting-star {
     position: absolute;
     top: -10%;
     left: -10%;
@@ -451,11 +451,11 @@ a {
 }
 .shooting-stars {
   display: none;
-}
+} */
 
 
 /* stagger timing */
-.shooting-star:nth-child(1) { animation-delay: 0s; }
+/* .shooting-star:nth-child(1) { animation-delay: 0s; }
 .shooting-star:nth-child(2) { animation-delay: 6s; }
 .shooting-star:nth-child(3) { animation-delay: 12s; }
 
@@ -474,6 +474,6 @@ a {
     100% {
         opacity: 0;
     }
-}
+} */
 
 
