@@ -385,7 +385,7 @@ a {
         rgba(255,255,255,0.3),
         transparent
     );
-    opacity: 0;
+    opacity: 1.5;
     transform: rotate(35deg);
     animation: shootingStar 18s linear infinite;
 }
