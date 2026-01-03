@@ -25,7 +25,8 @@ body {
     align-items: center;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.25;
+    opacity: 0.28;
+    transform: scale(1.15);
 }
 
 /* =========================
