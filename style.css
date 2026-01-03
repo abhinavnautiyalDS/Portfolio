@@ -45,7 +45,7 @@ body {
     z-index: 0;
     opacity: 0.35;
 } */
-.atom-orbits {
+/* .atom-orbits {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -54,10 +54,10 @@ body {
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: -1;              /* 🔥 BELOW EVERYTHING */
-    isolation: isolate;       /* 🔥 CRITICAL */
-}
+   /* isolation: isolate;       /* 🔥 CRITICAL } 
+*/
 
-.nucleus {
+/* .nucleus {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -67,14 +67,14 @@ body {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 0 0 20px #00ffff;
-}
+} */
 
-.orbit {
+/* .orbit {
     position: absolute;
     top: 50%;
     left: 50%;
     border: 2px solid rgba(0,255,255,0.6);
-/* */
+
     box-shadow: 0 0 12px rgba(0,255,255,0.35);
     border-radius: 50%;
     transform: translate(-50%, -50%);
@@ -83,10 +83,10 @@ body {
 
 .orbit1 { width: 300px; height: 300px; animation-duration: 18s; }
 .orbit2 { width: 450px; height: 300px; animation-duration: 25s; }
-.orbit3 { width: 600px; height: 450px; animation-duration: 32s; }
+.orbit3 { width: 600px; height: 450px; animation-duration: 32s; } */
 
 
-.electron {
+/* .electron {
     position: absolute;
     top: -6px;
     left: 50%;
@@ -102,7 +102,7 @@ body {
 @keyframes spin {
     from { transform: translate(-50%, -50%) rotate(0deg); }
     to   { transform: translate(-50%, -50%) rotate(360deg); }
-}
+} */
 
 /* =========================
    FOREGROUND GUARANTEE
