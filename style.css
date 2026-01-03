@@ -27,6 +27,8 @@ body {
     pointer-events: none;
     opacity: 0.28;
     transform: scale(1.15);
+   filter: blur(0.2px);
+
 }
 
 /* =========================
