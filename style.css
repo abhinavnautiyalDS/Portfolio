@@ -16,6 +16,17 @@ body {
     font-family: Arial, sans-serif;
     overflow-x: hidden;
 }
+/* Lottie animations*/
+.atom-lottie-bg {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5;
+}
 
 /* =========================
    ATOM BACKGROUND (SAFE)
