@@ -174,6 +174,8 @@ a {
     font-size: 22px;
 }
 
+
+
 /* =========================
    INTRODUCTION
 ========================= */
@@ -211,6 +213,12 @@ a {
     display: block;
 }
 
+.intro-content iframe {
+    margin: 20px auto;
+    display: block;
+    border-radius: 8px;
+}
+
 /* =========================
    PROJECTS
 ========================= */
@@ -220,11 +228,22 @@ a {
     padding: 40px 20px;
 }
 
+
 .project-filters {
     display: flex;
     justify-content: center;
     gap: 15px;
 }
+
+.project {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
 
 .filter {
     background: none;
