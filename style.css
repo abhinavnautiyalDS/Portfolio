@@ -449,6 +449,10 @@ a {
     transform: rotate(35deg);
     animation: shootingStar 18s linear infinite;
 }
+.shooting-stars {
+  display: none;
+}
+
 
 /* stagger timing */
 .shooting-star:nth-child(1) { animation-delay: 0s; }
