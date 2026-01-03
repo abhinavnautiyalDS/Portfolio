@@ -346,7 +346,7 @@ a {
         radial-gradient(1px 1px at 40% 60%, rgba(255,255,255,0.5), transparent),
         radial-gradient(2px 2px at 90% 10%, rgba(255,255,255,0.7), transparent);
     background-repeat: repeat;
-    background-size: 300px 300px;
+    background-size: 200px 200px;
     animation: starFall 60s linear infinite;
     opacity: 0.4;
 }
