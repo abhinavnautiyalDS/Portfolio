@@ -1,3 +1,8 @@
+// to fast my website
+window.addEventListener("load", () => {
+  document.getElementById("atomLottie").play();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const modal = document.getElementById("cert-modal");
