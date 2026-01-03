@@ -33,6 +33,10 @@ body {
     transparent 20%, 
     black 45%);
 }
+.atom-lottie-bg lottie-player {
+  will-change: transform, opacity;
+}
+
 
 .atom-lottie-bg lottie-player {
   opacity: 0.22;
@@ -125,6 +129,15 @@ body {
     from { transform: translate(-50%, -50%) rotate(0deg); }
     to   { transform: translate(-50%, -50%) rotate(360deg); }
 } */
+/* Mobile-first kill switch */
+
+@media (max-width: 768px) {
+  .atom-lottie-bg,
+  .shooting-stars {
+    display: none;
+  }
+}
+
 
 /* =========================
    FOREGROUND GUARANTEE
@@ -409,6 +422,16 @@ a {
     z-index: -2;              /* 🔥 BELOW atom & stars */
     overflow: hidden;
 }
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  lottie-player,
+  .star-field,
+  .shooting-stars {
+    display: none !important;
+  }
+}
+
 
 .shooting-star {
     position: absolute;
