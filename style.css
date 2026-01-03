@@ -31,6 +31,13 @@ body {
 
 }
 
+.atom-lottie-bg lottie-player {
+  opacity: 0.25;
+  transform: scale(1.15);
+  filter: blur(0.4px);
+}
+
+
 /* =========================
    ATOM BACKGROUND (SAFE)
 ========================= */
