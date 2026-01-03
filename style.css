@@ -402,17 +402,17 @@ a {
 @keyframes shootingStar {
     0% {
         transform: translate(-200px, -200px) rotate(35deg);
-        opacity: 0;
+        opacity: 1;
     }
     5% {
         opacity: 1;
     }
     15% {
         transform: translate(120vw, 120vh) rotate(35deg);
-        opacity: 0;
+        opacity: 1;
     }
     100% {
-        opacity: 0;
+        opacity: 1;
     }
 }
 
