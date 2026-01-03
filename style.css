@@ -27,15 +27,27 @@ body {
     pointer-events: none;
     opacity: 0.28;
     transform: scale(1.15);
-    filter: blur(0.2px);
-
+    filter: blur(0.2px)
+    mask-image: radial-gradient(circle at center, 
+    transparent 0%, 
+    transparent 20%, 
+    black 45%);
 }
 
 .atom-lottie-bg lottie-player {
-  opacity: 0.25;
+  opacity: 0.22;
   transform: scale(1.15);
   filter: blur(0.4px);
 }
+
+@media (max-width: 768px) {
+  .atom-lottie-bg lottie-player {
+    width: 520px;
+    height: 520px;
+    opacity: 0.18;
+  }
+}
+
 
 
 /* =========================
