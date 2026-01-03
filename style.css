@@ -1,40 +1,24 @@
 /* =========================
    GLOBAL RESET
 ========================= */
-html, body {
-    position: relative;
-    z-index: 0;
-}
-
 * {
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
+    padding: 0;
     background: #0a0f1e;
     color: #ffffff;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
+    position: relative;
+    z-index: 0;
 }
 
 /* =========================
-   ATOM BACKGROUND (SAFE)
+   ATOM BACKGROUND (PURE VISUAL)
 ========================= */
-/* .atom-orbits,
-.atom-orbits * {
-    pointer-events: none !important; /* 🔥 CRITICAL */
-/*} */
-
-/* .atom-orbits {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 900px;
-    height: 900px;
-    z-index: 0;
-    opacity: 0.35;
-} */
 .atom-orbits {
     position: fixed;
     top: 50%;
@@ -42,9 +26,10 @@ body {
     width: 900px;
     height: 900px;
     transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: -1;              /* 🔥 BELOW EVERYTHING */
-    isolation: isolate;       /* 🔥 CRITICAL */
+    pointer-events: none;     /* NEVER capture clicks */
+    z-index: -1;              /* Always behind content */
+    isolation: isolate;       /* Prevent stacking-context bleed */
+    opacity: 0.35;
 }
 
 .nucleus {
@@ -63,7 +48,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    border: 2px solid rgba(0,255,255,0.4);
+    border: 2px solid rgba(0,255,255,0.35);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     animation: spin linear infinite;
@@ -90,16 +75,20 @@ body {
 }
 
 /* =========================
-   FOREGROUND GUARANTEE
+   FOREGROUND LAYERS
 ========================= */
 .hero,
 .introduction,
-.projects,
+.projects {
+    position: relative;
+    z-index: 10;
+}
+
 button,
 a {
     position: relative;
-    z-index: 5;
-    pointer-events: auto;
+    z-index: 20;
+    cursor: pointer;
 }
 
 /* =========================
@@ -110,6 +99,7 @@ a {
     padding: 80px 20px 60px;
 }
 
+/* Left button */
 .cert-button {
     position: absolute;
     top: 20px;
@@ -119,16 +109,31 @@ a {
     border: none;
     padding: 12px 26px;
     border-radius: 20px;
-    cursor: pointer;
     font-weight: 600;
+    cursor: pointer;
 }
 
+/* Right certificate preview */
 .cert-preview {
     position: absolute;
     top: 20px;
     right: 20px;
+
+    width: max-content;      /* 🔥 HIT-AREA FIX */
+    text-align: right;
+
     cursor: pointer;
-    opacity: 0.8;
+    z-index: 30;
+}
+
+.cert-preview ul {
+    margin: 0;
+    padding: 0;
+    list-style-position: inside;
+}
+
+.cert-preview li {
+    cursor: pointer;
 }
 
 .cert-preview li:hover {
@@ -136,6 +141,7 @@ a {
     text-decoration: underline;
 }
 
+/* Profile */
 .profile-pic {
     width: 200px;
     height: 200px;
@@ -151,6 +157,7 @@ a {
     object-fit: cover;
 }
 
+/* Social icons */
 .social-icons {
     display: flex;
     justify-content: center;
@@ -183,9 +190,9 @@ a {
     padding: 10px 22px;
     border-radius: 5px;
     border: none;
-    cursor: pointer;
     background: #00aaff;
     color: #fff;
+    cursor: pointer;
 }
 
 .tab.active {
@@ -219,8 +226,8 @@ a {
     background: none;
     border: none;
     color: #00aaff;
-    cursor: pointer;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .filter.active {
@@ -264,7 +271,6 @@ a {
     border-radius: 5px;
     text-decoration: none;
     color: #fff;
-    cursor: pointer;
 }
 
 .source {
