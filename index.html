@@ -116,7 +116,7 @@
         <button class="tab" data-tab="video">Video</button>
     </div>
 
-    <div class="intro-content active" id="written-content">
+    <!-- <div class="intro-content active" id="written-content">
         <p>
             I am a Physics graduate and aspiring Data Scientist with strong foundations in statistics, machine learning, and Python.
             I am a 21-year-old Physics graduate who began my journey early, and an aspiring Data Scientist with a strong foundation in statistics, machine learning, and Python.
@@ -124,7 +124,40 @@
             <br><br>
             I work across Machine Learning, Deep Learning, Generative AI, MLOps, SQL, and Power BI, and I constantly improve by building, breaking, and refining systems.
         </p>
+    </div> -->
+    .intro-content {
+      max-width: 900px;          /* prevents full-width text */
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .intro-content p {
+      font-size: 1.1rem;         /* ~17.5px (good for hero text) */
+      line-height: 1.8;
+      color: #e5e7eb;            /* soft white, not harsh */
+      margin-bottom: 1.2rem;
+    }
+
+    .intro-content strong {
+      color: #38bdf8;   /* matches your blue accent */
+      font-weight: 500;
+    }
+
+
+    <div class="intro-content active" id="written-content">
+          <p>
+            I am a <strong>21-year-old Physics graduate</strong> who began my journey early and an aspiring <strong>Data Scientist</strong> with a strong foundation in statistics, machine learning, and Python.
+          </p>
+        
+          <p>
+            I enjoy turning real-world problems into data-driven solutions—building machine learning models, creating reliable ML pipelines, and taking projects beyond notebooks toward production.
+          </p>
+        
+          <p>
+            I work across <strong>Machine Learning, Deep Learning, Generative AI, MLOps, SQL, and Power BI</strong>, and I constantly improve by building, breaking, and refining systems.
+          </p>
     </div>
+
 
     <div class="intro-content" id="video-content">
         <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
@@ -219,7 +252,7 @@ Giving emotions a voice</p>
         </div>
 
         <div class="project" data-category="sql">
-            <img src="banking">
+            <img src="banking.png">
             <h4>Banking Analytics & Insights Platform</h4>
             <p class="project-meta">Data-Driven Decision Making using Power BI</p>
             <div class="buttons">
