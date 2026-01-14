@@ -51,7 +51,7 @@ body {
     opacity: 0.18;
   }
 }
-
+/* Introduc
 
 
 /* =========================
@@ -255,9 +255,22 @@ a {
     background: #005588;
 }
 
-.intro-content {
+/* .intro-content {
     display: none;
+} */
+.intro-content {
+  max-width: 900px;          /* prevents full-width text */
+  margin: 0 auto;
+  text-align: center;
 }
+
+.intro-content p {
+  font-size: 1.1rem;         /* ~17.5px (good for hero text) */
+  line-height: 1.8;
+  color: #e5e7eb;            /* soft white, not harsh */
+  margin-bottom: 1.2rem;
+}
+
 
 .intro-content.active {
     display: block;
