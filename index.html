@@ -104,11 +104,16 @@
             <a href="https://www.linkedin.com/in/abhinavnautiyalds/"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/abhinavnautiyalDS"><i class="fab fa-github"></i></a>
             <a href="https://medium.com/@abhinavnautiyal96"><i class="fab fa-medium"></i></a>
-            <a href="#" onclick="toggleEmail(event)">
-                <i class="fas fa-envelope"></i>
-            </a>
+            <!-- Hidden checkbox -->
+            <input type="checkbox" id="show-email" hidden>
         
-            <span id="email" style="display: none; margin-left: 8px;">
+            <!-- Mail icon -->
+            <label for="show-email" style="cursor: pointer;">
+                <i class="fas fa-envelope"></i>
+            </label>
+        
+            <!-- Email text -->
+            <span id="email">
                 abhinavnautiyal96@gmail.com
             </span>
 
