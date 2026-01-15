@@ -69,20 +69,6 @@ body {
 
 /* Introduc*/
 
-.modal-content {
-    color: #ffffff;
-}
-
-.modal-content ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.modal-content ul li a:hover {
-    color: #4da3ff;
-    text-decoration: underline;
-}
 
 
 
@@ -413,7 +399,7 @@ a {
 }
 
 .modal-content {
-    background: #1a1f3a;
+    background: #8c8f9c;
     padding: 20px;
     margin: 15% auto;
     max-width: 500px;
