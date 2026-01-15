@@ -2,6 +2,15 @@
    GLOBAL RESET
 ========================= */
 
+#email {
+    display: none;
+    margin-left: 8px;
+}
+
+#show-email:checked + label + #email {
+    display: inline;
+}
+
 
 
 
