@@ -276,23 +276,20 @@ a {
     background: #005588;
 }
 
-/* .intro-content {
-    display: none;
-} */
 
-.intro-content {
-  max-width: 900px;          /* prevents full-width text */
+
+/* .intro-content {
+  max-width: 900px;          
   margin: 0 auto;
   text-align: center;
 }
 
 .intro-content p {
-  font-size: 1.1rem;         /* ~17.5px (good for hero text) */
+  font-size: 1.1rem;         
   line-height: 1.8;
-  color: #e5e7eb;            /* soft white, not harsh */
+  color: #e5e7eb;            
   margin-bottom: 1.2rem;
 }
-/* ---*/
 
 .intro-content.active {
     display: block;
@@ -302,6 +299,37 @@ a {
     margin: 20px auto;
     display: block;
     border-radius: 8px;
+} */
+
+/* Hide all intro contents by default */
+.intro-content {
+  display: none;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Show only active tab */
+.intro-content.active {
+  display: block;
+}
+
+/* Text styling */
+.intro-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e5e7eb;
+  margin-bottom: 1.2rem;
+}
+
+/* Video styling */
+.intro-content iframe {
+  width: 100%;
+  height: 360px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 8px;
+  border: none;
 }
 
 /* =========================
