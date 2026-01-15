@@ -65,7 +65,25 @@ body {
     opacity: 0.18;
   }
 }
-/* Introduc
+
+
+/* Introduc*/
+
+.modal-content {
+    color: #ffffff;
+}
+
+.modal-content ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.modal-content ul li a:hover {
+    color: #4da3ff;
+    text-decoration: underline;
+}
+
 
 
 /* =========================
