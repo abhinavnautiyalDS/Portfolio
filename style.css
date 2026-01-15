@@ -67,6 +67,32 @@ body {
 }
 
 
+/* Resume style*/
+.resume-cta {
+  display: inline-block;
+  margin: 18px auto 6px;
+  padding: 12px 28px;
+  background: #1EA7FF;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 18px rgba(30,167,255,0.45);
+  transition: all 0.3s ease;
+}
+
+.resume-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(30,167,255,0.75);
+}
+
+.resume-note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #9bb3c8;
+}
+
+
 /* Introduc*/
 
 
