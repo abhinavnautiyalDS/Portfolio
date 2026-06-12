@@ -1,241 +1,530 @@
-document.addEventListener("DOMContentLoaded", () => {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav Nautiyal | AI/ML Engineer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Clarity Analytics -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "v29koki9dp");
+    </script>
+</head>
+<body>
 
-    // ========================
-    // NAVBAR scroll effect
-    // ========================
-    const navbar = document.getElementById("navbar");
-    window.addEventListener("scroll", () => {
-        navbar.classList.toggle("scrolled", window.scrollY > 40);
-    });
+<!-- Background -->
+<div class="star-field"></div>
+<canvas id="shooting-stars-canvas"></canvas>
+<canvas id="particles-canvas"></canvas>
 
-    // Active nav link highlight on scroll
-    const navLinks = document.querySelectorAll(".nav-links a");
-    const allSections = document.querySelectorAll("section[id], header[id], footer[id]");
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                navLinks.forEach(link => {
-                    link.classList.remove("active");
-                    if (link.getAttribute("href") === "#" + entry.target.id) {
-                        link.classList.add("active");
-                    }
-                });
-            }
-        });
-    }, { rootMargin: "-40% 0px -55% 0px" });
-    allSections.forEach(s => sectionObserver.observe(s));
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <a class="nav-logo" href="#hero">AN<span class="dot">.</span></a>
+    <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills-section">Skills</a></li>
+        <li><a href="#experience-section">Experience</a></li>
+        <li><a href="#projects-section">Projects</a></li>
+        <li><a href="#blog-section">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+        <a href="https://drive.google.com/uc?export=download&id=1tMTNf8qWRBH6WTERCxUUr3rXDreBToZy" class="resume-btn" download><i class="fas fa-download"></i> Resume</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
 
-    
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+    <ul>
+        <li><a href="#hero" class="mobile-link">Home</a></li>
+        <li><a href="#about" class="mobile-link">About</a></li>
+        <li><a href="#skills-section" class="mobile-link">Skills</a></li>
+        <li><a href="#experience-section" class="mobile-link">Experience</a></li>
+        <li><a href="#projects-section" class="mobile-link">Projects</a></li>
+        <li><a href="#blog-section" class="mobile-link">Blog</a></li>
+        <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+    <a href="https://drive.google.com/file/d/1tMTNf8qWRBH6WTERCxUUr3rXDreBToZy/view?usp=sharing" class="resume-btn mobile-resume" download><i class="fas fa-download"></i> Download Resume</a>
+</div>
 
-    // ========================
-    // MOBILE NAV
-    // ========================
-    const hamburger = document.getElementById("hamburger");
-    const mobileNav = document.getElementById("mobile-nav");
+<!-- ===== CERTIFICATES MODAL ===== -->
+<div id="cert-modal" class="modal">
+    <div class="modal-content">
+        <button class="close" aria-label="Close">&times;</button>
+        <h3>Degrees &amp; Certificates</h3>
+        <ul class="cert-list">
+            <li>
+                <i class="fas fa-graduation-cap"></i>
+                <a href="https://drive.google.com/file/d/1rzuxIAn0Tp5PPR2i72XJCCSNuoJQKj1V/view" target="_blank">AlmaBetter Data Science</a>
+            </li>
+            <li>
+                <i class="fas fa-atom"></i>
+                <a href="https://drive.google.com/file/d/19Ui72ZPPT3gkIovxVL65lTzt1zqyylMj/view?usp=sharing" target="_blank">Physics Degree (B.Sc.)</a>
+            </li>
+            <li>
+                <i class="fas fa-briefcase"></i>
+                <a href="https://drive.google.com/file/d/1rBwzlbxef9ESRZ3SJ1t6Niak6rqigXLO/view?usp=sharing" target="_blank">Internship Certificate</a>
+            </li>
+        </ul>
+    </div>
+</div>
 
-    hamburger.addEventListener("click", (e) => {
-        e.stopPropagation();
-        mobileNav.classList.toggle("open");
-    });
-    document.querySelectorAll(".mobile-link").forEach(link => {
-        link.addEventListener("click", () => mobileNav.classList.remove("open"));
-    });
-    document.addEventListener("click", (e) => {
-        if (!navbar.contains(e.target)) mobileNav.classList.remove("open");
-    });
+<!-- ===== HERO ===== -->
+<header class="hero" id="hero">
+    <div class="hero-center reveal">
+        <div class="profile-wrapper">
+            <div class="profile-pic">
+                <img src="Abhinav Image.jpg" alt="Abhinav Nautiyal">
+            </div>
+            <div class="status-badge"><span class="pulse-dot"></span> Open to Opportunities</div>
+        </div>
+        <p class="hero-mono">HELLO, I'M</p>
+        <h1>Abhinav Nautiyal</h1>
+        <h2>AI/ML Engineer</h2>
+        <p class="hero-sub">Building intelligent systems with <span class="highlight">LLMs · RAG · Applied AI</span></p>
+        <div class="hero-cta">
+            <a href="#projects-section" class="btn-primary">View My Work</a>
+            <button class="btn-outline" id="open-cert-modal"><i class="fas fa-certificate"></i> Credentials</button>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/abhinavnautiyalds/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/abhinavnautiyalDS" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://medium.com/@abhinavnautiyal96" target="_blank" aria-label="Medium"><i class="fab fa-medium"></i></a>
+            <a href="mailto:abhinavnautiyal96@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <span></span>
+    </div>
+</header>
 
-    // ========================
-    // CERTIFICATES MODAL
-    // ========================
-    const modal    = document.getElementById("cert-modal");
-    const openBtn  = document.getElementById("open-cert-modal");
-    const closeBtn = document.querySelector(".close");
+<!-- ===== ABOUT ===== -->
+<section class="introduction" id="about">
+    <div class="section-label reveal">ABOUT ME</div>
+    <h2 class="section-title reveal">Who I Am</h2>
+    <div class="intro-tabs reveal">
+        <button class="tab active" data-tab="written"><i class="fas fa-align-left"></i> Written</button>
+        <button class="tab" data-tab="video"><i class="fas fa-play-circle"></i> Video Intro</button>
+    </div>
+    <div class="intro-content active reveal" id="written-content">
+    <p>
+        I'm an <strong>AI/ML Engineer</strong> focused on building end-to-end intelligent systems using machine learning and large language models.
+        I enjoy solving real-world problems through data processing, ML pipelines, retrieval systems, and deployment-ready AI applications.
+    </p>
+    <p>
+        My experience includes building <strong>Retrieval-Augmented Generation (RAG)</strong> systems, multimodal AI applications combining computer vision and NLP, and scalable machine learning workflows using Python and modern AI frameworks.
+        I'm particularly interested in practical AI systems that are reliable, efficient, and impactful in real-world environments.
+    </p>
+</div>
+    <div class="intro-content" id="video-content">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/uPl2UC7RygA" allowfullscreen title="Abhinav's Video Introduction"></iframe>
+        </div>
+    </div>
+</section>
 
-    if (modal && openBtn) {
-        openBtn.addEventListener("click", () => modal.classList.add("open"));
-        closeBtn?.addEventListener("click", () => modal.classList.remove("open"));
-        modal.addEventListener("click", (e) => {
-            if (e.target === modal) modal.classList.remove("open");
-        });
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") modal.classList.remove("open");
-        });
-    }
+<!-- ===== SECTION FILTERS ===== -->
+<div class="section-filters reveal">
+    <span class="filter-label">Show:</span>
+    <button class="section-filter active" data-section="skills">Skills</button>
+    <button class="section-filter active" data-section="experience">Experience</button>
+    <button class="section-filter active" data-section="education">Education</button>
+    <button class="section-filter active" data-section="projects">Projects</button>
+    <button class="section-filter active" data-section="blog">Blog</button>
+</div>
 
-    // ========================
-    // INTRODUCTION TABS
-    // Written is active by default (set in HTML), just handle clicks
-    // ========================
-    const tabs = document.querySelectorAll(".tab");
-    const introContents = document.querySelectorAll(".intro-content");
+<!-- ===== SKILLS ===== -->
+<section id="skills-section" class="skills">
+    <div class="section-label reveal">WHAT I KNOW</div>
+    <h2 class="section-title reveal">Technical Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-category reveal">
+            <div class="skill-icon"><i class="fas fa-robot"></i></div>
+            <h3>ML &amp; MLOps</h3>
+            <div class="skill-tags">
+                <span>Scikit-learn</span><span>RandomForest</span><span>XGBoost </span>
+                <span>MLflow</span><span>Docker</span><span>Streamlit</span>
+                <span>Time Series</span><span>Imbalanced Learning</span>
+            </div>
+        </div>
+        <div class="skill-category reveal">
+            <div class="skill-icon"><i class="fas fa-brain"></i></div>
+            <h3>Deep Learning &amp; GenAI</h3>
+            <div class="skill-tags">
+                <span>TensorFlow</span><span>Keras</span>
+                <span>LangChain</span><span>LangGraph</span><span>LLaMA</span><span>RAG</span>
+                <span>FAISS</span><span>ChromaDB</span><span>GPT</span>
+            </div>
+        </div>
+        <div class="skill-category reveal">
+            <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
+            <h3>Data &amp; Visualization</h3>
+            <div class="skill-tags">
+                <span>SQL</span><span>PostgreSQL</span><span>MySQL</span>
+                <span>Power BI</span><span>Tableau</span>
+                <span>Pandas</span><span>NumPy</span><span>Matplotlib</span>
+            </div>
+        </div>
+        <div class="skill-category reveal">
+            <div class="skill-icon"><i class="fas fa-tools"></i></div>
+            <h3>Tools &amp; Platforms</h3>
+            <div class="skill-tags">
+                <span>Git</span><span>GitHub Actions</span>
+                <span>Mysql</span><span>Docker</span><span>Mlflow</span>
+                <span>Jupyter</span><span>VS Code</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            tabs.forEach(t => t.classList.remove("active"));
-            introContents.forEach(c => c.classList.remove("active"));
-            tab.classList.add("active");
-            const target = document.getElementById(tab.dataset.tab + "-content");
-            if (target) target.classList.add("active");
-        });
-    });
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience-section" class="experience">
+    <div class="section-label reveal">MY JOURNEY</div>
+    <h2 class="section-title reveal">Relevant Experience</h2>
+    <div class="timeline">
+        <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <div>
+                        <h3>AI/ML Engineer trainee </h3>
+                        <p class="company">AlmaBetter</p>
+                    </div>
+                    <span class="exp-date">Aug.2023 – Jan.2026</span>
+                </div>
+                <ul>
+                    <li>Built and analysed AI-driven solutions across multiple real-world problem statements.</li>
+                    <li>Worked on machine learning and LLM-based system workflows as part of applied case studies.</li>
+                    <li>Implemented classification models for insurance cross-sell prediction, achieving <strong>92% AUC ROC</strong>.</li>
+                    <li>Designed interactive Power BI dashboards for banking analytics, adopted by <strong>5+ teams</strong>.</li>
+                    <li>Created multimodal AI applications combining computer vision and NLP for emotion-aware storytelling.</li>
+                </ul>
+                <div class="exp-tags">
+                    <span>RAG</span><span>LangChain</span><span>MLOps</span><span>Tensorflow</span><span>Scikit-learn</span><span>PowerBi</span><span>MySQL</span>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <div>
+                        <h3>Teaching Assistant – Data Science </h3>
+                        <p class="company">AlmaBetter</p>
+                    </div>
+                    <span class="exp-date">Feb.2025 – March.2025</span>
+                </div>
+                <ul>
+                    <li>Assisted learners with machine learning and AI concepts, explaining system workflows and modelling logic.</li>
+                    <li>Strengthened technical communication by simplifying complex AI ideas for diverse audiences.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
-    // ========================
-    // SECTION VISIBILITY FILTERS
-    // ========================
-    const sectionFilters = document.querySelectorAll(".section-filter");
-    const sectionMap = {
-        skills:     document.getElementById("skills-section"),
-        experience: document.getElementById("experience-section"),
-        education:  document.getElementById("education-section"),
-        projects:   document.getElementById("projects-section")
-    };
+<!-- ===== EDUCATION ===== -->
+<section id="education-section" class="education">
+    <div class="section-label reveal">BACKGROUND</div>
+    <h2 class="section-title reveal">Education</h2>
+        <div class="edu-item reveal">
+            <div class="edu-icon"><i class="fas fa-atom"></i></div>
+            <div class="edu-body">
+                <h3>Bachelor of Science (Physics)</h3>
+                <p class="edu-degree">Rajdhani College, University of Delhi</p>
+                <p class="edu-date">2019 – 2022</p>
+                <p class="edu-desc">Completed undergraduate degree at an early academic stage, reflecting strong learning discipline</p>
+            </div>
+        </div>
+</section>
 
-    function updateSections() {
-        sectionFilters.forEach(btn => {
-            const sec = sectionMap[btn.dataset.section];
-            if (sec) sec.style.display = btn.classList.contains("active") ? "block" : "none";
-        });
-    }
-    sectionFilters.forEach(btn => {
-        btn.addEventListener("click", () => {
-            btn.classList.toggle("active");
-            updateSections();
-        });
-    });
-    updateSections(); // apply on load
+<!-- ===== PROJECTS ===== -->
+<section id="projects-section" class="projects">
+    <div class="section-label reveal">MY WORK</div>
+    <h2 class="section-title reveal">All Projects</h2>
+    <div class="project-filters reveal">
+        <button class="filter active" data-category="all">All</button>
+        <button class="filter" data-category="ml">ML &amp; MLOps</button>
+        <button class="filter" data-category="dl">DL &amp; GenAI</button>
+        <button class="filter" data-category="sql">SQL &amp; Power BI</button>
+    </div>
+    <div class="project-grid">
 
-    // ========================
-    // PROJECT CATEGORY FILTERS
-    // ========================
-    const projectFilters = document.querySelectorAll(".filter");
-    const projectCards   = document.querySelectorAll(".project");
+        <div class="project reveal" data-category="dl">
+            <div class="project-img-wrap">
+                <img src="emotion.png" alt="Emotion Narrator AI">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">GenAI</span>
+            </div>
+            <div class="project-body">
+                <h4>Emotion Narrator AI</h4>
+                <div class="project-tech"><span>TensorFlow</span><span>TransferLearning</span><span>EfficientNET</span><span>GPT-2</span><span>TTS</span><span>Streamlit</span></div>
+                <p class="project-desc">Multimodal AI that detects facial emotions and generates a contextual story — giving feelings a voice.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Emotion-Narrator-AI-that-gives-feelings-a-voice/blob/main1/training/Cnn_model.ipynb" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://medium.com/@abhinavnautiyal96/emotion-narrator-building-a-multimodal-ai-system-that-sees-understands-and-speaks-human-emotion-9914b410da35" target="_blank"><i class="fab fa-medium"></i> Article</a>
+                </div>
+            </div>
+        </div>
 
-    projectFilters.forEach(filter => {
-        filter.addEventListener("click", () => {
-            projectFilters.forEach(f => f.classList.remove("active"));
-            filter.classList.add("active");
-            const cat = filter.dataset.category;
-            projectCards.forEach(card => {
-                const show = cat === "all" || card.dataset.category === cat;
-                card.style.display = show ? "flex" : "none";
-                if (show) {
-                    card.classList.remove("visible");
-                    requestAnimationFrame(() => {
-                        setTimeout(() => card.classList.add("visible"), 30);
-                    });
-                }
-            });
-        });
-    });
-    projectCards.forEach(p => (p.style.display = "flex"));
+        <div class="project reveal" data-category="ml">
+            <div class="project-img-wrap">
+                <img src="coverimage1.png" alt="MyGenius AI">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">GenAI</span>
+            </div>
+            <div class="project-body">
+                <h4>MyGenius AI</h4>
+                <div class="project-tech"><span>Langchain</span><span>Langgraph</span><span>Rag</span><span>Agnetic AI</span><span>FIASS</span></div>
+                <p class="project-desc">Router-driven multi-agent AI system for finance, documents, SQL, and conversational intelligence.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/mygenius-ai" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://medium.com/@abhinavnautiyal96/building-mygenius-ai-from-independent-ai-workflows-to-a-unified-multi-agent-platform-1b278bd79c48" target="_blank"><i class="fab fa-medium"></i> Article</a>
+                </div>
+            </div>
+        </div>
 
-    // ========================
-    // SCROLL REVEAL
-    // ========================
-    const revealEls = document.querySelectorAll(".reveal");
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Stagger siblings slightly
-                const siblings = Array.from(entry.target.parentNode.children)
-                    .filter(el => el.classList.contains("reveal"));
-                const idx = siblings.indexOf(entry.target);
-                setTimeout(() => {
-                    entry.target.classList.add("visible");
-                }, idx * 55);
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
+        <div class="project reveal" data-category="ml">
+            <div class="project-img-wrap">
+                <img src="walmart.png" alt="Walmart Sales Forecasting">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">MLOps</span>
+            </div>
+            <div class="project-body">
+                <h4>Walmart Sales Forecasting</h4>
+                <div class="project-tech"><span>RandomForest</span><span>MLflow</span><span>Docker</span><span>Streamlit</span></div>
+                <p class="project-desc">End-to-end MLOps pipeline for time series prediction with automated retraining and REST API deployment.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/walmart-sales-forecasting-mlops/blob/master1/data/scripts/mlops_project_EDA_.ipynb" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://medium.com/@abhinavnautiyal96/how-i-built-a-scalable-walmart-sales-forecasting-pipeline-using-machine-learning-and-mlops-2239f05c9eab" target="_blank"><i class="fab fa-medium"></i> Article</a>
+                </div>
+            </div>
+        </div>
 
-    revealEls.forEach(el => revealObserver.observe(el));
+        <div class="project reveal" data-category="dl">
+            <div class="project-img-wrap">
+                <img src="genai.png" alt="Finwise GenAI Platform">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">GenAI</span>
+            </div>
+            <div class="project-body">
+                <h4>Finwise GenAI Platform</h4>
+                <div class="project-tech"><span>LangChain</span><span>RAG</span><span>SQL Agent</span><span>Chroma</span></div>
+                <p class="project-desc">Generative AI assistant with agentic RAG, SQL querying, and automation for financial insights.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Finwise-GenAI-Assistant/tree/main/finwise-genai-capstone" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://medium.com/@abhinavnautiyal96/building-a-real-world-financial-genai-assistant-from-memory-to-automation-f4bf8f38a052" target="_blank"><i class="fab fa-medium"></i> Article</a>
+                </div>
+            </div>
+        </div>
 
-    // Hero reveal on load
-    const heroReveal = document.querySelector(".hero .reveal");
-    if (heroReveal) {
-        setTimeout(() => heroReveal.classList.add("visible"), 150);
-    }
+        <div class="project reveal" data-category="ml">
+            <div class="project-img-wrap">
+                <img src="vehical.png" alt="Vehicle Insurance Cross-Sell">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">ML</span>
+            </div>
+            <div class="project-body">
+                <h4>Vehicle Insurance Cross-Sell</h4>
+                <div class="project-tech"><span>SMOTE</span><span>XGBoost</span><span>Imbalanced Learning</span></div>
+                <p class="project-desc">Predictive model for insurance cross-sell using advanced resampling and ensemble techniques.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Health-Insurance-cross-Prediction/blob/main/HealthInsuranceCrossSellPrediction.ipynb" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://github.com/abhinavnautiyalDS/Health-Insurance-cross-Prediction" target="_blank"><i class="fab fa-github"></i> Repo</a>
+                </div>
+            </div>
+        </div>
 
-    // ========================
-    // SMOOTH SCROLL (offset for navbar height)
-    // ========================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                e.preventDefault();
-                const offset = navbar.offsetHeight + 16;
-                const top = target.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({ top, behavior: "smooth" });
-            }
-        });
-    });
+        <div class="project reveal" data-category="dl">
+            <div class="project-img-wrap">
+                <img src="job.png" alt="NLP Job Recommendation">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">NLP</span>
+            </div>
+            <div class="project-body">
+                <h4>NLP Job Recommendation</h4>
+                <div class="project-tech"><span>LangChain</span><span>Gemini</span><span>FAISS</span><span>Streamlit</span></div>
+                <p class="project-desc">Semantic resume-to-job matching and automated application generation using LLMs.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Smart-Job-Recommendation-System-using-LangChain-Gemini" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://github.com/abhinavnautiyalDS/Smart-Job-Recommendation-System-using-LangChain-Gemini" target="_blank"><i class="fab fa-github"></i> Repo</a>
+                </div>
+            </div>
+        </div>
 
+        <div class="project reveal" data-category="ml">
+            <div class="project-img-wrap">
+                <img src="book.png" alt="Kindle Book Recommendation">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">ML</span>
+            </div>
+            <div class="project-body">
+                <h4>Kindle Book Recommendation</h4>
+                <div class="project-tech"><span>NLP</span><span>TF-IDF</span><span>Cosine Similarity</span></div>
+                <p class="project-desc">Content-based recommendation engine using book descriptions and user preferences.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Book-recommender-system/blob/main/Book_recommeder_system.ipynb" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://github.com/abhinavnautiyalDS/Book-recommender-system" target="_blank"><i class="fab fa-github"></i> Repo</a>
+                </div>
+            </div>
+        </div>
 
+        <div class="project reveal" data-category="sql">
+            <div class="project-img-wrap">
+                <img src="flight.png" alt="Flight Fare Prediction">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">SQL</span>
+            </div>
+            <div class="project-body">
+                <h4>Flight Fare Prediction</h4>
+                <div class="project-tech"><span>Random Forest</span><span>SQL</span><span>EDA</span></div>
+                <p class="project-desc">Predictive model for flight prices with SQL-based data analysis and feature engineering.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/flight_price_prediction/blob/main/flight_price_prediction.ipynb" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://github.com/abhinavnautiyalDS/flight_price_prediction" target="_blank"><i class="fab fa-github"></i> Repo</a>
+                </div>
+            </div>
+        </div>
 
-    // ========================
-    // PARTICLE CANVAS (floating blue dots)
-    // ========================
-    const canvas = document.getElementById("particles-canvas");
-    if (!canvas) return;
+        <div class="project reveal" data-category="sql">
+            <div class="project-img-wrap">
+                <img src="banking.png" alt="Banking Analytics">
+                <div class="project-overlay"><span>View Project</span></div>
+                <span class="project-badge">BI</span>
+            </div>
+            <div class="project-body">
+                <h4>Banking Analytics Platform</h4>
+                <div class="project-tech"><span>Power BI</span><span>DAX</span><span>SQL</span></div>
+                <p class="project-desc">Interactive dashboards for customer segmentation, loan performance, and revenue analysis.</p>
+                <div class="buttons">
+                    <a class="btn source" href="https://github.com/abhinavnautiyalDS/Banking-Powerbi-Project/tree/main" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    <a class="btn read" href="https://github.com/abhinavnautiyalDS/Banking-Powerbi-Project" target="_blank"><i class="fab fa-github"></i> Repo</a>
+                </div>
+            </div>
+        </div>
 
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-    let W, H;
+    </div>
+</section>
 
-    function resize() {
-        W = canvas.width  = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener("resize", () => { resize(); initParticles(); });
+<!-- ===== BLOG ===== -->
+<section id="blog-section" class="blog">
+    <div class="section-label reveal">MY WRITING</div>
+    <h2 class="section-title reveal">From the Blog</h2>
+    <p class="blog-intro reveal">Thoughts on ML, AI systems, and lessons from building real-world projects.</p>
 
-    function initParticles() {
-        particles = [];
-        const count = Math.min(Math.floor((W * H) / 18000), 80);
-        for (let i = 0; i < count; i++) {
-            particles.push({
-                x: Math.random() * W,
-                y: Math.random() * H,
-                r: Math.random() * 1.2 + 0.3,
-                vx: (Math.random() - 0.5) * 0.18,
-                vy: (Math.random() - 0.5) * 0.18,
-                alpha: Math.random() * 0.45 + 0.15
-            });
-        }
-    }
-    initParticles();
+    <div class="blog-grid">
 
-    
+        <article class="blog-card reveal">
+            <div class="blog-card-header">
+                <span class="blog-tag">ML Systems</span>
+                <span class="blog-read-time"><i class="fas fa-clock"></i> 8 min read</span>
+            </div>
+            <h3 class="blog-title">Understanding the Complete ML Lifecycle — the Way It Finally Made Sense to Me</h3>
+            <p class="blog-excerpt">A practical walkthrough of how ML systems actually work end-to-end — from data ingestion to deployment — written the way I wish someone had explained it to me first.</p>
+            <a href="https://medium.com/@abhinavnautiyal96/understanding-the-complete-ml-lifecycle-the-way-it-finally-made-sense-to-me-804ce73f7159" target="_blank" class="blog-link">
+                Read on Medium <i class="fab fa-medium"></i>
+            </a>
+        </article>
 
-    function drawParticles() {
-        ctx.clearRect(0, 0, W, H);
-        particles.forEach(p => {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(0, 194, 255, ${p.alpha})`;
-            ctx.fill();
-            p.x += p.vx;
-            p.y += p.vy;
-            if (p.x < 0) p.x = W;
-            if (p.x > W) p.x = 0;
-            if (p.y < 0) p.y = H;
-            if (p.y > H) p.y = 0;
-        });
-        requestAnimationFrame(drawParticles);
-    }
-    drawParticles();
+        <article class="blog-card reveal">
+            <div class="blog-card-header">
+                <span class="blog-tag">Deep Learning</span>
+                <span class="blog-read-time"><i class="fas fa-clock"></i> 12 min read</span>
+            </div>
+            <h3 class="blog-title">Convolutional Neural Networks: From Intuition to Mathematics and Real-World Implementation</h3>
+            <p class="blog-excerpt">Breaking down CNNs from first principles — how convolutions actually work, the math behind feature maps, and a full implementation you can run yourself.</p>
+            <a href="https://medium.com/@abhinavnautiyal96/convolutional-neural-networks-cnns-from-intuition-to-mathematics-and-real-world-implementation-511fe931d135" target="_blank" class="blog-link">
+                Read on Medium <i class="fab fa-medium"></i>
+            </a>
+        </article>
 
-});
+        <article class="blog-card reveal">
+            <div class="blog-card-header">
+                <span class="blog-tag">GenAI</span>
+                <span class="blog-read-time"><i class="fas fa-clock"></i> 10 min read</span>
+            </div>
+            <h3 class="blog-title">Building a Real-World Financial GenAI Assistant — From Memory to Automation</h3>
+            <p class="blog-excerpt">How I built Finwise — an agentic RAG system with memory, SQL querying, and document understanding for financial analysis. Lessons learned the hard way.</p>
+            <a href="https://medium.com/@abhinavnautiyal96/building-a-real-world-financial-genai-assistant-from-memory-to-automation-f4bf8f38a052" target="_blank" class="blog-link">
+                Read on Medium <i class="fab fa-medium"></i>
+            </a>
+        </article>
 
-function copyEmail(event) {
-    event.preventDefault();   // stop page jump
+        <article class="blog-card reveal">
+            <div class="blog-card-header">
+                <span class="blog-tag">MLOps</span>
+                <span class="blog-read-time"><i class="fas fa-clock"></i> 9 min read</span>
+            </div>
+            <h3 class="blog-title">How I Built a Scalable Walmart Sales Forecasting Pipeline Using ML and MLOps</h3>
+            <p class="blog-excerpt">A deep dive into building a production-grade forecasting system with MLflow experiment tracking, Docker, and a Streamlit interface for monitoring predictions.</p>
+            <a href="https://medium.com/@abhinavnautiyal96/how-i-built-a-scalable-walmart-sales-forecasting-pipeline-using-machine-learning-and-mlops-2239f05c9eab" target="_blank" class="blog-link">
+                Read on Medium <i class="fab fa-medium"></i>
+            </a>
+        </article>
 
-    const email = "abhinavnautiyal96@gmail.com";
+        <article class="blog-card reveal">
+            <div class="blog-card-header">
+                <span class="blog-tag">Multimodal AI</span>
+                <span class="blog-read-time"><i class="fas fa-clock"></i> 11 min read</span>
+            </div>
+            <h3 class="blog-title">Emotion Narrator: Building a Multimodal AI System That Sees, Understands, and Speaks Human Emotion</h3>
+            <p class="blog-excerpt">How I combined EfficientNet for facial emotion detection with GPT-2 for story generation and TTS — building a system that gives feelings a voice.</p>
+            <a href="https://medium.com/@abhinavnautiyal96/emotion-narrator-building-a-multimodal-ai-system-that-sees-understands-and-speaks-human-emotion-9914b410da35" target="_blank" class="blog-link">
+                Read on Medium <i class="fab fa-medium"></i>
+            </a>
+        </article>
 
-    navigator.clipboard.writeText(email).then(() => {
-        alert("Mail ID copied!");
-    }).catch(() => {
-        alert("Failed to copy email.");
-    });
-}
+        <article class="blog-card reveal">
+            <div class="blog-card-header">
+                <span class="blog-tag">Multi-Agent</span>
+                <span class="blog-read-time"><i class="fas fa-clock"></i> 10 min read</span>
+            </div>
+            <h3 class="blog-title">Building MyGenius AI: From Independent AI Workflows to a Unified Multi-Agent Platform</h3>
+            <p class="blog-excerpt">The architecture decisions behind routing between agents, managing state with LangGraph, and turning five separate AI tools into one coherent platform.</p>
+            <a href="https://medium.com/@abhinavnautiyal96/building-mygenius-ai-from-independent-ai-workflows-to-a-unified-multi-agent-platform-1b278bd79c48" target="_blank" class="blog-link">
+                Read on Medium <i class="fab fa-medium"></i>
+            </a>
+        </article>
+
+    </div>
+
+    <div class="blog-cta reveal">
+        <a href="https://medium.com/@abhinavnautiyal96" target="_blank" class="btn-outline">
+            <i class="fab fa-medium"></i> View All Articles on Medium
+        </a>
+    </div>
+</section>
+
+<!-- ===== FOOTER / CONTACT ===== -->
+<footer class="footer" id="contact">
+    <div class="footer-inner">
+        <div class="footer-top reveal">
+            <h2>Let's Build Something Together</h2>
+            <p>Open to full-time roles, freelance projects, and AI research collaborations.</p>
+            <a href="#" class="btn-primary large-btn" onclick="copyEmail(event)">
+                <i class="fas fa-paper-plane"></i> Get In Touch
+            </a>
+        </div>
+        <div class="footer-links reveal">
+            <a href="https://www.linkedin.com/in/abhinavnautiyalds/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/abhinavnautiyalDS" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://medium.com/@abhinavnautiyal96" target="_blank"><i class="fab fa-medium"></i> Medium</a>
+        </div>
+        <p class="footer-copy">© 2025 Abhinav Nautiyal · Crafted with passion</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
