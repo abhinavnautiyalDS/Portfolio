@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ========================
     // SECTION VISIBILITY FILTERS
-    // Now includes "blog" section
     // ========================
     const sectionFilters = document.querySelectorAll(".section-filter");
     const sectionMap = {
@@ -92,16 +91,25 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateSections() {
         sectionFilters.forEach(btn => {
             const sec = sectionMap[btn.dataset.section];
-            if (sec) sec.style.display = btn.classList.contains("active") ? "block" : "none";
+            if (sec) {
+                const isActive = btn.classList.contains("active");
+                sec.style.display = isActive ? "block" : "none";
+                // When a section becomes visible, trigger reveals inside it
+                if (isActive) {
+                    sec.querySelectorAll(".reveal:not(.visible)").forEach((el, idx) => {
+                        setTimeout(() => el.classList.add("visible"), idx * 55 + 50);
+                    });
+                }
+            }
         });
     }
+
     sectionFilters.forEach(btn => {
         btn.addEventListener("click", () => {
             btn.classList.toggle("active");
             updateSections();
         });
     });
-    updateSections(); // apply on load
 
     // ========================
     // PROJECT CATEGORY FILTERS
@@ -130,29 +138,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ========================
     // SCROLL REVEAL
+    // Uses IntersectionObserver but with a fallback: after 800ms
+    // any .reveal still not visible gets forced visible (handles
+    // elements inside display:none parents or observer edge cases).
     // ========================
+    function makeVisible(el, delay) {
+        setTimeout(() => el.classList.add("visible"), delay || 0);
+    }
+
     const revealEls = document.querySelectorAll(".reveal");
+
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const siblings = Array.from(entry.target.parentNode.children)
                     .filter(el => el.classList.contains("reveal"));
                 const idx = siblings.indexOf(entry.target);
-                setTimeout(() => {
-                    entry.target.classList.add("visible");
-                }, idx * 55);
+                makeVisible(entry.target, idx * 55);
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05, rootMargin: "0px 0px -40px 0px" });
 
     revealEls.forEach(el => revealObserver.observe(el));
 
-    // Hero reveal on load
-    const heroReveal = document.querySelector(".hero .reveal");
-    if (heroReveal) {
-        setTimeout(() => heroReveal.classList.add("visible"), 150);
-    }
+    // Fallback: force-reveal everything visible after 900ms in case
+    // observer missed them (hidden sections, instant scroll, etc.)
+    setTimeout(() => {
+        document.querySelectorAll(".reveal:not(.visible)").forEach((el, idx) => {
+            // Only force-reveal if its section is currently displayed
+            const section = el.closest("section, header, footer, div");
+            const isHidden = section && window.getComputedStyle(section).display === "none";
+            if (!isHidden) makeVisible(el, idx * 30);
+        });
+    }, 900);
+
+    // Hero reveal on load — immediate
+    document.querySelectorAll(".hero .reveal").forEach((el, i) => {
+        makeVisible(el, 100 + i * 80);
+    });
+
+    // Section-filters row reveal (it's outside a section)
+    document.querySelectorAll(".section-filters .reveal").forEach((el, i) => {
+        makeVisible(el, 300 + i * 60);
+    });
+
+    // Apply sections on load AFTER reveals are set up
+    updateSections();
 
     // ========================
     // SMOOTH SCROLL (offset for navbar height)
@@ -187,67 +219,54 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener("resize", resizeShooting);
 
         function randomShootingStar() {
-            // Start from left edge or top edge, move diagonally right-downward
             const fromTop = Math.random() < 0.5;
-            const x = fromTop ? Math.random() * sW : -80;
-            const y = fromTop ? -10 : Math.random() * sH * 0.6;
-
-            // Angle: roughly 25–40 degrees diagonal (left-to-right, top-to-bottom)
+            const x = fromTop ? Math.random() * sW * 0.7 : -60;
+            const y = fromTop ? -10 : Math.random() * sH * 0.5;
             const angle = (25 + Math.random() * 15) * (Math.PI / 180);
             const speed = 6 + Math.random() * 8;
 
             return {
-                x,
-                y,
+                x, y,
                 vx: Math.cos(angle) * speed,
                 vy: Math.sin(angle) * speed,
                 length: 80 + Math.random() * 120,
                 alpha: 0,
-                maxAlpha: 0.7 + Math.random() * 0.3,
-                fade: "in",  // "in" | "out"
+                maxAlpha: 0.65 + Math.random() * 0.3,
+                fade: "in",
                 width: 1 + Math.random() * 1.2
             };
         }
 
-        // Spawn a new shooting star at a random interval
         function spawnStar() {
             shootingStars.push(randomShootingStar());
-            // Next star in 1.2–3.5 seconds
             setTimeout(spawnStar, 1200 + Math.random() * 2300);
         }
-        // Initial staggered spawn
-        setTimeout(spawnStar, 400);
-        setTimeout(spawnStar, 1800);
-        setTimeout(spawnStar, 3200);
+        setTimeout(spawnStar, 500);
+        setTimeout(spawnStar, 2000);
+        setTimeout(spawnStar, 3500);
 
         function drawShootingStars() {
             sCtx.clearRect(0, 0, sW, sH);
 
             shootingStars = shootingStars.filter(s => {
-                // Fade in
                 if (s.fade === "in") {
                     s.alpha += 0.06;
-                    if (s.alpha >= s.maxAlpha) {
-                        s.alpha = s.maxAlpha;
-                        s.fade = "out";
-                    }
+                    if (s.alpha >= s.maxAlpha) { s.alpha = s.maxAlpha; s.fade = "out"; }
                 } else {
-                    s.alpha -= 0.025;
+                    s.alpha -= 0.022;
                 }
 
-                // Move
                 s.x += s.vx;
                 s.y += s.vy;
 
-                // Tail direction (opposite of movement)
-                const tailX = s.x - Math.cos(Math.atan2(s.vy, s.vx)) * s.length;
-                const tailY = s.y - Math.sin(Math.atan2(s.vy, s.vx)) * s.length;
+                const angle = Math.atan2(s.vy, s.vx);
+                const tailX = s.x - Math.cos(angle) * s.length;
+                const tailY = s.y - Math.sin(angle) * s.length;
 
-                // Draw gradient streak
                 const grad = sCtx.createLinearGradient(tailX, tailY, s.x, s.y);
-                grad.addColorStop(0, `rgba(255, 255, 255, 0)`);
-                grad.addColorStop(0.6, `rgba(180, 230, 255, ${s.alpha * 0.4})`);
-                grad.addColorStop(1, `rgba(255, 255, 255, ${s.alpha})`);
+                grad.addColorStop(0,   `rgba(255,255,255,0)`);
+                grad.addColorStop(0.6, `rgba(180,230,255,${s.alpha * 0.4})`);
+                grad.addColorStop(1,   `rgba(255,255,255,${s.alpha})`);
 
                 sCtx.beginPath();
                 sCtx.moveTo(tailX, tailY);
@@ -257,13 +276,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 sCtx.lineCap = "round";
                 sCtx.stroke();
 
-                // Bright head dot
                 sCtx.beginPath();
-                sCtx.arc(s.x, s.y, s.width * 1.2, 0, Math.PI * 2);
-                sCtx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
+                sCtx.arc(s.x, s.y, s.width * 1.3, 0, Math.PI * 2);
+                sCtx.fillStyle = `rgba(255,255,255,${s.alpha})`;
                 sCtx.fill();
 
-                // Keep if still visible and on screen
                 return s.alpha > 0 && s.x < sW + 200 && s.y < sH + 200;
             });
 
@@ -327,9 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function copyEmail(event) {
     event.preventDefault();
-
     const email = "abhinavnautiyal96@gmail.com";
-
     navigator.clipboard.writeText(email).then(() => {
         alert("Mail ID copied!");
     }).catch(() => {
