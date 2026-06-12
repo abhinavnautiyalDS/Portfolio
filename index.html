@@ -1,476 +1,241 @@
-<!DOCTYPE html>
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+document.addEventListener("DOMContentLoaded", () => {
 
+    // ========================
+    // NAVBAR scroll effect
+    // ========================
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 40);
+    });
 
+    // Active nav link highlight on scroll
+    const navLinks = document.querySelectorAll(".nav-links a");
+    const allSections = document.querySelectorAll("section[id], header[id], footer[id]");
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === "#" + entry.target.id) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+        });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    allSections.forEach(s => sectionObserver.observe(s));
 
-<!-- <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhinav | Data Scientist</title>
-
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-     <!-- Analytics -->
-    <!-- <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "v29koki9dp");
-</script>
-    
-</head>
-<body> --> -->
-
-    
-
-<!-- ATOM BACKGROUND -->
-<!-- <div class="atom-orbits">
-    <div class="nucleus"></div>
-
-    <div class="orbit orbit1"><span class="electron"></span></div>
-    <div class="orbit orbit2"><span class="electron"></span></div>
-    <div class="orbit orbit3"><span class="electron"></span></div>
-</div> -->
-
-<!-- <div class="atom-lottie-bg">
-  <lottie-player
-    src="./ai animation Flow 1.json"
-    background="transparent"
-    speed="1"
-    loop
-    autoplay>
-  </lottie-player>
-</div>
-    
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
- -->
-
-
-
-<!-- stars --> 
-<div class="star-field"></div>
-
-<!-- Shooting Star Layer -->
-<div class="shooting-stars">
-  <span class="shooting-star"></span>
-  <span class="shooting-star"></span>
-  <span class="shooting-star"></span>
-</div>
-
-
-<!-- Certificates Modal -->
-<!-- <div id="cert-modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3>Degrees & Certificates</h3>
-    <ul>
-      <li>AlmaBetter Data Science</li>
-      <li>Physics Degree</li>
-      <li>Internship</li>
-    </ul>
-  </div>
-</div> -->
-
-<!-- Certificates Modal -->
-<div id="cert-modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-
-    <h3>Degrees & Certificates</h3>
-
-    <ul class="cert-list">
-      <li>
-        <a href="https://drive.google.com/file/d/1rzuxIAn0Tp5PPR2i72XJCCSNuoJQKj1V/view" target="_blank">
-          AlmaBetter Data Science
-        </a>
-      </li>
-
-      <li>
-        <a href="https://drive.google.com/file/d/19Ui72ZPPT3gkIovxVL65lTzt1zqyylMj/view?usp=sharing" target="_blank">
-          Physics Degree
-        </a>
-      </li>
-
-      <li>
-        <a href="https://drive.google.com/file/d/1rBwzlbxef9ESRZ3SJ1t6Niak6rqigXLO/view?usp=sharing" target="_blank">
-          Internship
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-
-
-
-<!-- HERO -->
-<header class="hero">
-    <!-- ATOM BACKGROUND -->
-    <!-- <div class="atom-orbits">
-        <div class="nucleus"></div>
-    
-        <div class="orbit orbit1"><span class="electron"></span></div>
-        <div class="orbit orbit2"><span class="electron"></span></div>
-        <div class="orbit orbit3"><span class="electron"></span></div>
-    </div> -->
-    
-    <button class="cert-button" id="open-cert-modal">
-          Degrees & Certificates
-    </button>
-    
-    <!-- <div class="cert-preview" id="open-cert-preview">
-       <ul>
-          <li>AlmaBetter Data Science</li>
-          <li>Physics Degree</li>
-          <li>Internship</li>
-       </ul>
-    </div> -->
-
- 
-
-
-
-
-    <div class="hero-center">
-        <div class="profile-pic">
-            <img src="abhinavImage.png" alt="Profile">
-        </div>
-
-        <h1>Abhinav Nautiyal</h1>
-        <h2>AI/ML Engineer | LLM Systems • RAG • Applied AI</h2>
-
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/abhinavnautiyalds/"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/abhinavnautiyalDS"><i class="fab fa-github"></i></a>
-            <a href="https://medium.com/@abhinavnautiyal96"><i class="fab fa-medium"></i></a>
-            <!-- Hidden checkbox -->
-            <input type="checkbox" id="show-email" hidden>
-        
-            <!-- Mail icon -->
-            <label for="show-email" style="cursor: pointer;">
-                <i class="fas fa-envelope"></i>
-            </label>
-        
-             <!-- resume  dowload -->
-
-            <span id="email">
-                abhinavnautiyal96@gmail.com
-            </span>
-          
-
-
-        </div>
-    </div>
-</header>
-
-
-
-<!-- INTRO -->
-<section class="introduction">
-    <h2>Introduction</h2>
-
-    <div class="intro-tabs">
-        <button class="tab active" data-tab="written">Written</button>
-        <button class="tab" data-tab="video">Video</button>
-    </div>
-
-    <div class="intro-content active" id="written-content">
-        <p>
-            I am an AI/ML Engineer focused on building end-to-end intelligent systems using machine learning and large language models.
-            I work on real-world problems by designing systems that go beyond model training — including data processing, retrieval pipelines, and deployment-ready workflows.
-            My experience includes building Retrieval-Augmented Generation (RAG) systems, multimodal AI applications combining computer vision and NLP, and scalable machine learning pipelines for prediction tasks.
-            Alongside this, I have a strong foundation in data science, including exploratory analysis, feature engineering, and model evaluation.
-            I approach problems with a system-first mindset — focusing on reliability, scalability, and practical impact rather than just theoretical models.
-        </p>
-    </div>
     
 
+    // ========================
+    // MOBILE NAV
+    // ========================
+    const hamburger = document.getElementById("hamburger");
+    const mobileNav = document.getElementById("mobile-nav");
 
-    <!-- <div class="intro-content active" id="written-content">
-          <p>
-            I am a <strong>21-year-old Physics graduate</strong> who began my journey early and an aspiring <strong>Data Scientist</strong> with a strong foundation in statistics, machine learning, and Python.
-          </p>
-        
-          <p>
-            I enjoy turning real-world problems into data-driven solutions—building machine learning models, creating reliable ML pipelines, and taking projects beyond notebooks toward production.
-          </p>
-        
-          <p>
-            I work across <strong>Machine Learning, Deep Learning, Generative AI, MLOps, SQL, and Power BI</strong>, and I constantly improve by building, breaking, and refining systems.
-          </p>
-    </div> -->
+    hamburger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        mobileNav.classList.toggle("open");
+    });
+    document.querySelectorAll(".mobile-link").forEach(link => {
+        link.addEventListener("click", () => mobileNav.classList.remove("open"));
+    });
+    document.addEventListener("click", (e) => {
+        if (!navbar.contains(e.target)) mobileNav.classList.remove("open");
+    });
+
+    // ========================
+    // CERTIFICATES MODAL
+    // ========================
+    const modal    = document.getElementById("cert-modal");
+    const openBtn  = document.getElementById("open-cert-modal");
+    const closeBtn = document.querySelector(".close");
+
+    if (modal && openBtn) {
+        openBtn.addEventListener("click", () => modal.classList.add("open"));
+        closeBtn?.addEventListener("click", () => modal.classList.remove("open"));
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) modal.classList.remove("open");
+        });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") modal.classList.remove("open");
+        });
+    }
+
+    // ========================
+    // INTRODUCTION TABS
+    // Written is active by default (set in HTML), just handle clicks
+    // ========================
+    const tabs = document.querySelectorAll(".tab");
+    const introContents = document.querySelectorAll(".intro-content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            introContents.forEach(c => c.classList.remove("active"));
+            tab.classList.add("active");
+            const target = document.getElementById(tab.dataset.tab + "-content");
+            if (target) target.classList.add("active");
+        });
+    });
+
+    // ========================
+    // SECTION VISIBILITY FILTERS
+    // ========================
+    const sectionFilters = document.querySelectorAll(".section-filter");
+    const sectionMap = {
+        skills:     document.getElementById("skills-section"),
+        experience: document.getElementById("experience-section"),
+        education:  document.getElementById("education-section"),
+        projects:   document.getElementById("projects-section")
+    };
+
+    function updateSections() {
+        sectionFilters.forEach(btn => {
+            const sec = sectionMap[btn.dataset.section];
+            if (sec) sec.style.display = btn.classList.contains("active") ? "block" : "none";
+        });
+    }
+    sectionFilters.forEach(btn => {
+        btn.addEventListener("click", () => {
+            btn.classList.toggle("active");
+            updateSections();
+        });
+    });
+    updateSections(); // apply on load
+
+    // ========================
+    // PROJECT CATEGORY FILTERS
+    // ========================
+    const projectFilters = document.querySelectorAll(".filter");
+    const projectCards   = document.querySelectorAll(".project");
+
+    projectFilters.forEach(filter => {
+        filter.addEventListener("click", () => {
+            projectFilters.forEach(f => f.classList.remove("active"));
+            filter.classList.add("active");
+            const cat = filter.dataset.category;
+            projectCards.forEach(card => {
+                const show = cat === "all" || card.dataset.category === cat;
+                card.style.display = show ? "flex" : "none";
+                if (show) {
+                    card.classList.remove("visible");
+                    requestAnimationFrame(() => {
+                        setTimeout(() => card.classList.add("visible"), 30);
+                    });
+                }
+            });
+        });
+    });
+    projectCards.forEach(p => (p.style.display = "flex"));
+
+    // ========================
+    // SCROLL REVEAL
+    // ========================
+    const revealEls = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Stagger siblings slightly
+                const siblings = Array.from(entry.target.parentNode.children)
+                    .filter(el => el.classList.contains("reveal"));
+                const idx = siblings.indexOf(entry.target);
+                setTimeout(() => {
+                    entry.target.classList.add("visible");
+                }, idx * 55);
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Hero reveal on load
+    const heroReveal = document.querySelector(".hero .reveal");
+    if (heroReveal) {
+        setTimeout(() => heroReveal.classList.add("visible"), 150);
+    }
+
+    // ========================
+    // SMOOTH SCROLL (offset for navbar height)
+    // ========================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+                e.preventDefault();
+                const offset = navbar.offsetHeight + 16;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: "smooth" });
+            }
+        });
+    });
 
 
-    <div class="intro-content" id="video-content">
-        <iframe src="https://www.youtube.com/embed/uPl2UC7RygA" allowfullscreen></iframe>
-    </div>
-</section>
 
-<!-- PROJECTS -->
-<section class="projects">
-    <h2>All Projects</h2>
+    // ========================
+    // PARTICLE CANVAS (floating blue dots)
+    // ========================
+    const canvas = document.getElementById("particles-canvas");
+    if (!canvas) return;
 
-    <div class="project-filters">
-        <button class="filter active" data-category="all">All</button>
-        <button class="filter" data-category="ml">ML & MLOps</button>
-        <button class="filter" data-category="dl">DL & GenAI</button>
-        <button class="filter" data-category="sql">SQL & PowerBI</button>
-    </div>
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    let W, H;
 
-    <div class="project-grid">
+    function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener("resize", () => { resize(); initParticles(); });
 
-        <!-- 8 PROJECTS -->
-        <!-- <div class="project" data-category="dl">
-            <img src="emotion.png">
-            <h4>Emotion Narrator AI</h4>
-            <p class="project-meta">Emotion Detection & Story Generation using Multimodal AI
-Giving emotions a voice</p>
-            <div class="buttons">
-                <a class="btn source">Source Code</a>
-                <a class="btn read">Read</a>
-            </div>
-        </div> -->
+    function initParticles() {
+        particles = [];
+        const count = Math.min(Math.floor((W * H) / 18000), 80);
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                r: Math.random() * 1.2 + 0.3,
+                vx: (Math.random() - 0.5) * 0.18,
+                vy: (Math.random() - 0.5) * 0.18,
+                alpha: Math.random() * 0.45 + 0.15
+            });
+        }
+    }
+    initParticles();
 
-        <div class="project" data-category="dl">
-            <img src="emotion.png">
-            <h4>Emotion Narrator AI</h4>
-        
-            <p class="project-meta">
-                Emotion Detection & Story Generation using Multimodal AI<br>
-                Giving emotions a voice
-            </p>
-        
-            <div class="buttons">
-                <!-- Source Code Button -->
-                <a class="btn source"
-                   href="https://github.com/abhinavnautiyalDS/Emotion-Narrator-AI-that-gives-feelings-a-voice/blob/main1/training/Cnn_model.ipynb?short_path=b8015f0"
-                   target="_blank">
-                   Source Code
-                </a>
-        
-                <!-- Read Button -->
-                <a class="btn read"
-                   href="https://medium.com/@abhinavnautiyal96/emotion-narrator-building-a-multimodal-ai-system-that-sees-understands-and-speaks-human-emotion-9914b410da35"
-                   target="_blank">
-                   Read
-                </a>
-            </div>
-        </div>
-
-        
-<!-- 2ND -->
-
-    <div class="project" data-category="ml">
-        <img src="walmart.png" alt="Walmart Sales Forecasting">
-        <h4>Walmart Sales Forecasting</h4>
-        <p class="project-meta">
-            End-to-End MLOps Pipeline for Time Series Prediction
-        </p>
-        <div class="buttons">
-            <a class="btn source" 
-               href="https://github.com/abhinavnautiyalDS/walmart-sales-forecasting-mlops/blob/master1/data/scripts/mlops_project_EDA_.ipynb" 
-               target="_blank">
-                Source Code
-            </a>
     
-            <a class="btn read" 
-               href="https://medium.com/@abhinavnautiyal96/how-i-built-a-scalable-walmart-sales-forecasting-pipeline-using-machine-learning-and-mlops-2239f05c9eab" 
-               target="_blank">
-                Read
-            </a>
-        </div>
-    </div>
 
-<div class="project" data-category="dl">
-    <img src="genai.png" alt="Finwise GenAI Platform">
-    <h4>Finwise GenAI Platform</h4>
-    <p class="project-meta">
-        End-to-End Generative AI System with Agents, RAG, SQL & Automation
-    </p>
-    <div class="buttons">
-        <a class="btn source" 
-           href="https://github.com/abhinavnautiyalDS/Finwise-GenAI-Assistant/tree/main/finwise-genai-capstone" 
-           target="_blank">
-            Source Code
-        </a>
+    function drawParticles() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0, 194, 255, ${p.alpha})`;
+            ctx.fill();
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0) p.x = W;
+            if (p.x > W) p.x = 0;
+            if (p.y < 0) p.y = H;
+            if (p.y > H) p.y = 0;
+        });
+        requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
 
-        <a class="btn read" 
-           href="https://medium.com/@abhinavnautiyal96/building-a-real-world-financial-genai-assistant-from-memory-to-automation-f4bf8f38a052" 
-           target="_blank">
-            Read
-        </a>
-    </div>
-</div>
+});
 
-<!-- resT -->
-    <div class="project" data-category="ml">
-        <img src="vehical.png" alt="Vehicle Insurance Cross-Sell Prediction">
-        <h4>Vehicle Insurance Cross-Sell Prediction</h4>
-        <p class="project-meta">Imbalanced Classification using Machine Learning</p>
-        <div class="buttons">
-            <a class="btn source"
-               href="https://github.com/abhinavnautiyalDS/Health-Insurance-cross-Prediction/blob/main/HealthInsuranceCrossSellPrediction.ipynb"
-               target="_blank">
-                Source Code
-            </a>
-            <a class="btn read"
-               href="https://github.com/abhinavnautiyalDS/Health-Insurance-cross-Prediction"
-               target="_blank">
-                Read
-            </a>
-        </div>
-    </div>
+function copyEmail(event) {
+    event.preventDefault();   // stop page jump
 
-<div class="project" data-category="dl">
-    <img src="job.png" alt="NLP Driven Job Recommendation">
-    <h4>NLP-Driven Job Recommendation & Application Automation</h4>
-    <p class="project-meta">Semantic Matching and Text Generation using LLMs</p>
-    <div class="buttons">
-        <a class="btn source"
-           href="https://github.com/abhinavnautiyalDS/Smart-Job-Recommendation-System-using-LangChain-Gemini"
-           target="_blank">
-            Source Code
-        </a>
-        <a class="btn read"
-           href="https://github.com/abhinavnautiyalDS/Smart-Job-Recommendation-System-using-LangChain-Gemini"
-           target="_blank">
-            Read
-        </a>
-    </div>
-</div>
+    const email = "abhinavnautiyal96@gmail.com";
 
-<div class="project" data-category="ml">
-    <img src="book.png" alt="Kindle Book Recommendation System">
-    <h4>Kindle Book Recommendation System</h4>
-    <p class="project-meta">Content-Based Recommendation using NLP</p>
-    <div class="buttons">
-        <a class="btn source"
-           href="https://github.com/abhinavnautiyalDS/Book-recommender-system/blob/main/Book_recommeder_system.ipynb"
-           target="_blank">
-            Source Code
-        </a>
-        <a class="btn read"
-           href="https://github.com/abhinavnautiyalDS/Book-recommender-system"
-           target="_blank">
-            Read
-        </a>
-    </div>
-</div>
-
-<div class="project" data-category="sql">
-    <img src="flight.png" alt="Flight Fare Prediction System">
-    <h4>Flight Fare Prediction System</h4>
-    <p class="project-meta">Price Prediction using Machine Learning and SQL</p>
-    <div class="buttons">
-        <a class="btn source"
-           href="https://github.com/abhinavnautiyalDS/flight_price_prediction/blob/main/flight_price_prediction.ipynb"
-           target="_blank">
-            Source Code
-        </a>
-        <a class="btn read"
-           href="https://github.com/abhinavnautiyalDS/flight_price_prediction"
-           target="_blank">
-            Read
-        </a>
-    </div>
-</div>
-
-<div class="project" data-category="sql">
-    <img src="banking.png" alt="Banking Analytics Platform">
-    <h4>Banking Analytics & Insights Platform</h4>
-    <p class="project-meta">Data-Driven Decision Making using Power BI</p>
-    <div class="buttons">
-        <a class="btn source"
-           href="https://github.com/abhinavnautiyalDS/Banking-Powerbi-Project/tree/main"
-           target="_blank">
-            Source Code
-        </a>
-        <a class="btn read"
-           href="https://github.com/abhinavnautiyalDS/Banking-Powerbi-Project"
-           target="_blank">
-            Read
-        </a>
-    </div>
-</div>
-
-        <!-- <div class="project" data-category="ml">
-            <img src="walmart.png">
-            <h4>Walmart Sales Forecasting</h4>
-            <p class="project-meta">End-to-End MLOps Pipeline for Time Series Prediction
-</p>
-            <div class="buttons">
-                <a class="btn source">Source Code</a>
-                <a class="btn read">Read</a>
-            </div>
-        </div>
-
-        <div class="project" data-category="dl">
-            <img src="genai.png">
-            <h4>Finwise GenAI Platform</h4>
-            <p class="project-meta">End-to-End Generative AI System with Agents, RAG, SQL & Automation
-</p>
-            <div class="buttons">
-                <a class="btn source">Source Code</a>
-                <a class="btn read">Read</a>
-            </div>
-        </div>
-
-        <div class="project" data-category="ml">
-            <img src="vehical.png">
-            <h4>Vehicle Insurance Cross-Sell Prediction</h4>
-            <p class="project-meta">Imbalanced Classification using Machine Learning</p>
-            <div class="buttons">
-                <a class="btn source">Source Code</a>
-                <a class="btn read">Read</a>
-            </div>
-        </div>
-
-        <div class="project" data-category="dl">
-            <img src="job.png">
-            <h4>NLP-Driven Job Recommendation & Application Automation</h4>
-            <p class="project-meta">Semantic Matching and Text Generation using LLMs</p>
-            <div class="buttons">
-                <a class="btn source">Source Code</a>
-                <a class="btn read">Read</a>
-            </div>
-        </div>
-
-        <div class="project" data-category="ml">
-            <img src="book.png">
-            <h4>Kindle Book Recommendation System</h4>
-            <p class="project-meta">Content-Based Recommendation using NLP</p>
-            <div class="buttons">
-                <a class="btn source">Source Code</a>
-                <a class="btn read">Read</a>
-            </div>
-        </div>
-
-        <div class="project" data-category="sql">
-            <img src="flight.png">
-            <h4>Flight Fare Prediction System</h4>
-            <p class="project-meta">Price Prediction using Machine Learning and SQL</p>
-            <div class="buttons">
-                <a class="btn source">Source Code</a>
-                <a class="btn read">Read</a>
-            </div>
-        </div>
-
-        <div class="project" data-category="sql">
-            <img src="banking.png">
-            <h4>Banking Analytics & Insights Platform</h4>
-            <p class="project-meta">Data-Driven Decision Making using Power BI</p>
-            <div class="buttons">
-                <a class="btn source">Source Code</a>
-                <a class="btn read">Read</a>
-            </div>
-        </div>
-
-        
-
-    </div> -->
-</section>
-
+    navigator.clipboard.writeText(email).then(() => {
+        alert("Mail ID copied!");
+    }).catch(() => {
+        alert("Failed to copy email.");
+    });
+}
